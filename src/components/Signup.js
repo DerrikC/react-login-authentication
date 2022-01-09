@@ -10,7 +10,6 @@ export default function Signup () {
   const [error, setError] = useState("");
     //remove passref
   const [password, setPassword, setPasswordRef ] = useState("");
-  const [loading, setLoading] = useState(false)
   const { signUp } = useUserAuth();
   let navigate = useNavigate();
 
@@ -24,8 +23,6 @@ export default function Signup () {
     } catch (err) {
       setError(err.message);
     }
-    //remove
-    setLoading(false)  
 
   };
 
@@ -56,7 +53,7 @@ export default function Signup () {
               placeholder="Password"
               onChange={(e) => setPasswordRef(e.target.value)} />
             </Form.Group>
-            <Button disabled={loading} type="submit">Sign Up</Button>
+            <Button type="submit">Sign Up</Button>
         </Form>
         </Card.Body>
         </Card>

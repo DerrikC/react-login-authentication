@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Card, Form } from "react-bootstrap";
+import { Card, Form, Alert } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { useUserAuth } from "../context/UserAuthContext";
 
@@ -9,7 +9,6 @@ export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
-    const [loading, setLoading] = useState(false)
     const { logIn } = useUserAuth();
     const navigate = useNavigate();
   
@@ -22,8 +21,7 @@ export default function Login() {
       } catch (err) {
         setError(err.message);
       }
-        //remove
-    setLoading(false)  
+
     };
 
     return (
@@ -31,7 +29,7 @@ export default function Login() {
         <Card>
         <Card.Body>
         <h2 className="text-center mb-4"> Login </h2>
-    
+        {error && <Alert variant="danger">{error}</Alert>}
         <Form onSubmit={handleSubmit}>
             <Form.Group id="email">
                 <Form.Label>Email</Form.Label>
@@ -45,7 +43,7 @@ export default function Login() {
               placeholder="Password"
               onChange={(e) => setPassword(e.target.value)} />
             </Form.Group>
-            <Button disabled={loading} type="submit">Login</Button>
+            <Button type="submit">Login</Button>
         </Form>
         <div className="w-100 text-center mt-3">
             <Link to="/forgot-password">Forgot Password?</Link>
