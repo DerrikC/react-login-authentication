@@ -16,3 +16,5 @@ const app = initializeApp(firebaseConfig)
 export const auth = getAuth(app)
 export default app
 //to be used everywhere else
+
+
