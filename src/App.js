@@ -1,17 +1,35 @@
-import React from 'react'
-import { Routes, Route } from "react-router-dom"
-import Login from "./components/Login"
-import Signup from "./components/Signup"
+import { Container, Row, Col } from "react-bootstrap";
+import { Routes, Route } from "react-router-dom";
+import "./App.css";
+import Home from "./components/Home";
+import Login from "./components/Login";
+import Signup from "./components/Signup";
+import PrivateRoute from "./components/PrivateRoute";
+import { UserAuthContextProvider } from "./context/UserAuthContext";
 
-export default function App() {
+function App() {
   return (
-    <div>
-    <Routes>
-      <Route>
-        <Route path="/" element={<Login/>} />
-        <Route path="/signup" element={<Signup/>} />
-      </Route>
-    </Routes>
-    </div>
+    <Container style={{ width: "400px" }}>
+      <Row>
+        <Col>
+          <UserAuthContextProvider>
+            <Routes>
+              <Route
+                path="/home"
+                element={
+                  <PrivateRoute>
+                    <Home />
+                  </PrivateRoute>
+                }
+              />
+              <Route path="/" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+            </Routes>
+          </UserAuthContextProvider>
+        </Col>
+      </Row>
+    </Container>
   )
 }
+
+export default App
