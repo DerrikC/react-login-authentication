@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Card, Form, Alert } from "react-bootstrap";
+import { Container, Card, Form, Alert } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { useUserAuth } from "../context/UserAuthContext";
 
@@ -26,24 +26,25 @@ export default function Login() {
 
     return (
         <>
+        <Container className="pt-4">
         <Card>
         <Card.Body>
         <h2 className="text-center mb-4"> Login </h2>
         {error && <Alert variant="danger">{error}</Alert>}
         <Form onSubmit={handleSubmit}>
-            <Form.Group id="email">
+            <Form.Group className="w-100 mb-2" id="email">
                 <Form.Label>Email</Form.Label>
                 <Form.Control type="email"
               placeholder="Email address"
               onChange={(e) => setEmail(e.target.value)} />
             </Form.Group>
-            <Form.Group id="password">
+            <Form.Group className="w-100 mb-2" id="password">
                 <Form.Label>Password</Form.Label>
                 <Form.Control type="password"
               placeholder="Password"
               onChange={(e) => setPassword(e.target.value)} />
             </Form.Group>
-            <Button type="submit">Login</Button>
+            <Button className="w-100 mt-2" type="submit">Login</Button>
         </Form>
         <div className="w-100 text-center mt-3">
             <Link to="/forgot-password">Forgot Password?</Link>
@@ -53,6 +54,7 @@ export default function Login() {
         <div className="w-100 text-center mt-2">
         Need an account? <Link to="/signup">Sign Up</Link>
         </div>
+        </Container>
         </>
     )
 }
