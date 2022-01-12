@@ -1,6 +1,6 @@
 
 import React, { useState } from "react";
-import { Form, Button, Card, Alert } from "react-bootstrap"
+import { Container, Form, Button, Card, Alert } from "react-bootstrap"
 import { Link, useNavigate } from "react-router-dom";
 import { useUserAuth } from "../context/UserAuthContext";
 
@@ -29,37 +29,39 @@ export default function Signup () {
     return (
         //need the blank tag for jsx formatting
         <>
+        <Container className="pt-4">
         <Card>
         <Card.Body>
         <h2 className="text-center mb-4"> Sign Up</h2>
         {error && <Alert variant="danger">{error}</Alert>}
         <Form onSubmit={handleSubmit}>
-            <Form.Group id="email">
+            <Form.Group className="w-100 mb-2"  id="email">
                 <Form.Label>Email</Form.Label>
                 <Form.Control type="email"
               placeholder="Email address"
               onChange={(e) => setEmail(e.target.value)} />
             </Form.Group>
-            <Form.Group id="password">
+            <Form.Group className="w-100 mb-2"  id="password">
                 <Form.Label>Password</Form.Label>
                 <Form.Control type="password"
               placeholder="Password"
               onChange={(e) => setPassword(e.target.value)} />
             </Form.Group>
             {/* remove password confirm group */}
-            <Form.Group id="password-confirm">
+            <Form.Group className="w-100 mb-3" id="password-confirm">
                 <Form.Label>Password Confirmation</Form.Label>
                 <Form.Control type="password"
               placeholder="Password"
               onChange={(e) => setPasswordRef(e.target.value)} />
             </Form.Group>
-            <Button type="submit">Sign Up</Button>
+            <Button className="w-100 mt-2" type="submit">Sign Up</Button>
         </Form>
         </Card.Body>
         </Card>
         <div className="w-100 text-center mt-2">
         Already have an account? <Link to="/">Login</Link>
         </div>
+        </Container>
         </>
     )
 }
