@@ -29,7 +29,8 @@ export default function Login() {
         <Container className="pt-4">
         <Card>
         <Card.Body>
-        <h2 className="text-center mb-4"> Login </h2>
+        <img src="./images/elections-canada-logo-sm.png" width="40%" margin="24px"/>
+        <h2 className="text-left mt-4 mb-4"> Start your <br></br> voting process. </h2>
         {error && <Alert variant="danger">{error}</Alert>}
         <Form onSubmit={handleSubmit}>
             <Form.Group className="w-100 mb-2" id="email">
@@ -44,11 +45,12 @@ export default function Login() {
               placeholder="Password"
               onChange={(e) => setPassword(e.target.value)} />
             </Form.Group>
-            <Button className="w-100 mt-2" type="submit">Login</Button>
-        </Form>
-        <div className="w-100 text-center mt-3">
+            <div className="w-100 text-left mt-3">
             <Link to="/forgot-password">Forgot Password?</Link>
         </div>
+            <Button className="w-100 mt-4" type="submit">Login</Button>
+            <Button variant="outline-secondary" className="w-100 mt-2" type="submit">Register to Vote</Button>
+        </Form>
         </Card.Body>
         </Card>
         <div className="w-100 text-center mt-2">
