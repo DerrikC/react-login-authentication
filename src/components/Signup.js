@@ -9,7 +9,7 @@ export default function Signup () {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
     //remove passref
-  const [password, setPassword, setPasswordRef ] = useState("");
+  const [password, setPassword] = useState("");
   const { signUp } = useUserAuth();
   let navigate = useNavigate();
 
@@ -47,13 +47,7 @@ export default function Signup () {
               placeholder="Password"
               onChange={(e) => setPassword(e.target.value)} />
             </Form.Group>
-            {/* remove password confirm group */}
-            <Form.Group className="w-100 mb-3" id="password-confirm">
-                <Form.Label>Password Confirmation</Form.Label>
-                <Form.Control type="password"
-              placeholder="Password"
-              onChange={(e) => setPasswordRef(e.target.value)} />
-            </Form.Group>
+            {/* removed password confirmation */}
             <Button className="w-100 mt-2" type="submit">Sign Up</Button>
         </Form>
         </Card.Body>

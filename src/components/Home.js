@@ -17,7 +17,7 @@ const Home = () => {
   return (
     <>
        <Container className="pt-4">
-      <div className="p-4 box mt-3 text-center">
+      <div className="p-4 box mt-3 text-left">
         Hello Welcome <br />
         {user && user.email}
       </div>
